@@ -1,0 +1,11 @@
+model\Atendimento.class
+model\Pessoa.class
+model\Consulta.class
+model\Sala.class
+repository\JsonRepository.class
+service\FilaEspera.class
+interfaces\Agendavel.class
+model\Paciente.class
+main\Main.class
+service\AgendamentoService.class
+model\Profissional.class

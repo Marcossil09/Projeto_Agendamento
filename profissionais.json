@@ -1,0 +1,122 @@
+[
+  {
+    "especialidade": "Cardiologia",
+    "valorConsulta": 300,
+    "duracaoAtendimento": 50,
+    "nome": "DR. CARLOS",
+    "cpf": "111",
+    "idade": 45
+  },
+  {
+    "especialidade": "Dermatologia",
+    "valorConsulta": 280,
+    "duracaoAtendimento": 30,
+    "nome": "DRA. JULIANA",
+    "cpf": "222",
+    "idade": 38
+  },
+  {
+    "especialidade": "Ortopedia",
+    "valorConsulta": 250,
+    "duracaoAtendimento": 30,
+    "nome": "DR. RENATO",
+    "cpf": "333",
+    "idade": 50
+  },
+  {
+    "especialidade": "Pediatria",
+    "valorConsulta": 160,
+    "duracaoAtendimento": 40,
+    "nome": "DRA. LUCIA",
+    "cpf": "444",
+    "idade": 41
+  },
+  {
+    "especialidade": "Neurologia",
+    "valorConsulta": 420,
+    "duracaoAtendimento": 60,
+    "nome": "DR. MARCELO",
+    "cpf": "555",
+    "idade": 48
+  },
+  {
+    "especialidade": "Ginecologia",
+    "valorConsulta": 220,
+    "duracaoAtendimento": 40,
+    "nome": "DRA. PATRICIA",
+    "cpf": "666",
+    "idade": 39
+  },
+  {
+    "especialidade": "Oftalmologia",
+    "valorConsulta": 270,
+    "duracaoAtendimento": 35,
+    "nome": "DR. FELIPE",
+    "cpf": "777",
+    "idade": 44
+  },
+  {
+    "especialidade": "Psiquiatria",
+    "valorConsulta": 350,
+    "duracaoAtendimento": 60,
+    "nome": "DRA. CAMILA",
+    "cpf": "888",
+    "idade": 36
+  },
+  {
+    "especialidade": "Endocrinologia",
+    "valorConsulta": 310,
+    "duracaoAtendimento": 45,
+    "nome": "DR. ANDRE",
+    "cpf": "999",
+    "idade": 52
+  },
+  {
+    "especialidade": "Clínico Geral",
+    "valorConsulta": 150,
+    "duracaoAtendimento": 25,
+    "nome": "DR. LEONARDO",
+    "cpf": "101",
+    "idade": 34
+  },
+  {
+    "especialidade": "Urologia",
+    "valorConsulta": 290,
+    "duracaoAtendimento": 40,
+    "nome": "DR. GUSTAVO",
+    "cpf": "202",
+    "idade": 46
+  },
+  {
+    "especialidade": "Nutrição",
+    "valorConsulta": 180,
+    "duracaoAtendimento": 50,
+    "nome": "DRA. ALINE",
+    "cpf": "303",
+    "idade": 31
+  },
+  {
+    "especialidade": "Fisioterapia",
+    "valorConsulta": 140,
+    "duracaoAtendimento": 60,
+    "nome": "DR. BRUNO",
+    "cpf": "404",
+    "idade": 29
+  },
+  {
+    "especialidade": "Otorrinolaringologia",
+    "valorConsulta": 260,
+    "duracaoAtendimento": 35,
+    "nome": "DRA. FERNANDA",
+    "cpf": "505",
+    "idade": 42
+  },
+  {
+    "especialidade": "Oncologia",
+    "valorConsulta": 500,
+    "duracaoAtendimento": 70,
+    "nome": "DR. RICARDO",
+    "cpf": "606",
+    "idade": 57
+  }
+]
