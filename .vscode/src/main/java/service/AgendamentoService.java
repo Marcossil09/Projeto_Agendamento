@@ -1,30 +1,55 @@
 package service;
 
 import model.Atendimento;
+import model.Paciente;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class AgendamentoService {
 
-    private FilaEspera filaEspera = new FilaEspera();    
+    // =========================================
+    // ATRIBUTOS
+    // =========================================
+
+    private FilaEspera filaEspera =
+            new FilaEspera();
+
     private List<Atendimento> atendimentos =
             new ArrayList<>();
 
+    private static final int LIMITE_AGENDAMENTOS = 10;
+
+    // =========================================
+    // AGENDAR ATENDIMENTO
+    // =========================================
 
     public boolean agendar(Atendimento novo) {
 
-
-        if (atendimentos.size() >= 10) {
+        // VALIDAÇÃO
+        if (novo == null) {
 
             System.out.println(
-                    "Limite máximo de agendamentos atingido."
+                    "Atendimento inválido."
             );
 
             return false;
         }
 
+        // LIMITE DO SISTEMA
+        if (atendimentos.size()
+                >= LIMITE_AGENDAMENTOS) {
 
+            System.out.println(
+                    "Limite máximo de agendamentos atingido."
+            );
+
+            adicionarPacienteFila(novo.getPaciente());
+
+            return false;
+        }
+
+        // VERIFICA CONFLITOS
         for (Atendimento atendimento : atendimentos) {
 
             boolean mesmaData =
@@ -38,7 +63,7 @@ public class AgendamentoService {
             boolean mesmoProfissional =
                     atendimento.getProfissional()
                             .getNome()
-                            .equals(
+                            .equalsIgnoreCase(
                                     novo.getProfissional()
                                             .getNome()
                             );
@@ -47,9 +72,12 @@ public class AgendamentoService {
                     atendimento.getSala()
                             .getNumero()
 
-                    == novo.getSala()
+                            == novo.getSala()
                             .getNumero();
 
+            // =====================================
+            // CONFLITO PROFISSIONAL
+            // =====================================
 
             if (
                     mesmaData
@@ -63,9 +91,16 @@ public class AgendamentoService {
                         "Conflito: profissional já possui atendimento nesse horário."
                 );
 
+                adicionarPacienteFila(
+                        novo.getPaciente()
+                );
+
                 return false;
             }
 
+            // =====================================
+            // CONFLITO SALA
+            // =====================================
 
             if (
                     mesmaData
@@ -79,10 +114,15 @@ public class AgendamentoService {
                         "Conflito: sala ocupada."
                 );
 
+                adicionarPacienteFila(
+                        novo.getPaciente()
+                );
+
                 return false;
             }
         }
 
+        // SALVA AGENDAMENTO
         atendimentos.add(novo);
 
         System.out.println(
@@ -91,6 +131,26 @@ public class AgendamentoService {
 
         return true;
     }
+
+    // =========================================
+    // ADICIONAR NA FILA
+    // =========================================
+
+    private void adicionarPacienteFila(
+            Paciente paciente
+    ) {
+
+        filaEspera.adicionar(paciente);
+
+        System.out.println(
+                "Paciente adicionado à fila de espera: "
+                        + paciente.getNome()
+        );
+    }
+
+    // =========================================
+    // LISTAR ATENDIMENTOS
+    // =========================================
 
     public void listarAtendimentos() {
 
@@ -107,15 +167,26 @@ public class AgendamentoService {
                 "\n===== ATENDIMENTOS ====="
         );
 
-        for (Atendimento atendimento : atendimentos) {
+        for (int i = 0;
+             i < atendimentos.size();
+             i++) {
 
-            System.out.println(atendimento);
+            System.out.println(
+                    "[" + i + "] "
+                            + atendimentos.get(i)
+            );
         }
     }
 
+    // =========================================
+    // CANCELAR ATENDIMENTO
+    // =========================================
 
-    public void cancelarAtendimento(int indice) {
+    public void cancelarAtendimento(
+            int indice
+    ) {
 
+        // VALIDAÇÃO
         if (
                 indice < 0
                         ||
@@ -129,25 +200,92 @@ public class AgendamentoService {
             return;
         }
 
+        // REMOVE
         Atendimento removido =
                 atendimentos.remove(indice);
 
         System.out.println(
-                "Atendimento cancelado:"
+                "\nAtendimento cancelado:"
         );
 
         System.out.println(removido);
+
+        // =====================================
+        // CHAMAR PRÓXIMO DA FILA
+        // =====================================
+
+        chamarProximoDaFila();
     }
 
+    // =========================================
+    // CHAMAR PRÓXIMO DA FILA
+    // =========================================
+
+    private void chamarProximoDaFila() {
+
+        if (filaEspera.estaVazia()) {
+
+            System.out.println(
+                    "Nenhum paciente na fila."
+            );
+
+            return;
+        }
+
+        Paciente proximo =
+                filaEspera.chamarProximo();
+
+        System.out.println(
+                "\nPaciente chamado da fila:"
+        );
+
+        System.out.println(
+                proximo.getNome()
+        );
+    }
+
+    // =========================================
+    // EXIBIR FILA
+    // =========================================
+
+    public void exibirFila() {
+
+        System.out.println(
+                "\n===== FILA DE ESPERA ====="
+        );
+
+        filaEspera.mostrarFila();
+    }
+
+    // =========================================
+    // TOTAL DE ATENDIMENTOS
+    // =========================================
+
     public int totalAtendimentos() {
+
         return atendimentos.size();
     }
 
+    // =========================================
+    // TAMANHO FILA
+    // =========================================
+
+    public int tamanhoFila() {
+
+        return filaEspera.tamanho();
+    }
+
+    // =========================================
+    // GETTERS
+    // =========================================
 
     public List<Atendimento> getAtendimentos() {
+
         return atendimentos;
     }
-   public int tamanhoFila() {
-    return filaEspera.tamanho();
-}
+
+    public FilaEspera getFilaEspera() {
+
+        return filaEspera;
+    }
 }

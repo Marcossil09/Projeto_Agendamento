@@ -159,10 +159,20 @@ public class RelatorioService {
                 .sum();
 
         System.out.println("Receita total geral:   R$ " + String.format("%.2f", receitaGeral));
+ // =========================================
+    // FILA DE ESPERA
+    // =========================================
 
-        System.out.println("Fila de espera:        " + agendamentoService.tamanhoFila());
-    }
+    System.out.println(
+            "Fila de espera:        "
+                    + agendamentoService.tamanhoFila()
+                    + " paciente(s)"
+    );
 
+    // LISTA PACIENTES DA FILA
+
+    agendamentoService.exibirFila();
+}
     // =============================================
     // LISTAR POR CONVENIO
     // =============================================
