@@ -20,14 +20,15 @@ public class Consulta extends Atendimento implements Agendavel {
         return true;
     }
 
-    @Override
-    public String toString() {
-        return "Consulta{" +
-                "data=" + data +
-                ", hora=" + hora +
-                ", sala=" + sala +
-                ", paciente=" + paciente.getNome() +
-                ", profissional=" + profissional.getNome() +
-                '}';
-    }
+     @Override
+public String toString() {
+
+    return "Consulta" +
+            " | Data: " + data +
+            " | Hora: " + hora +
+            " | Sala: " + sala +
+            " | Paciente: " + paciente.getNome() +
+            " | Profissional: " + profissional.getNome();
+
+}
 }

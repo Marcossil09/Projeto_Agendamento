@@ -38,12 +38,7 @@ public class FilaEspera {
 
 
     public void adicionar(Paciente paciente) {
-
         fila.add(paciente);
-
-        System.out.println(
-                "Paciente adicionado à fila."
-        );
     }
 
 

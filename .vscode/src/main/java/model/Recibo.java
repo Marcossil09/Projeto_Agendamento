@@ -97,21 +97,21 @@ public class Recibo {
         return cancelado;
     }
 
-    @Override
-    public String toString() {
+     @Override
+public String toString() {
 
-        return "\n========== RECIBO ==========\n" +
-                "Paciente:       " + paciente.getNome() + "\n" +
-                "Profissional:   " + profissional.getNome() + "\n" +
-                "Data:           " + data + "\n" +
-                "Hora:           " + hora + "\n" +
-                "Tipo:           " + tipoAtendimento + "\n" +
-                "Cobrança:       " + tipoCobranca + "\n" +
-                "Valor base:     R$ " + String.format("%.2f", valorBase) + "\n" +
-                "Desconto:       " + desconto + "%\n" +
-                "Taxa cancelam.: R$ " + String.format("%.2f", taxaCancelamento) + "\n" +
-                "Cancelado:      " + cancelado + "\n" +
-                "TOTAL:          R$ " + String.format("%.2f", totalCobrado) + "\n" +
-                "============================\n";
-    }
+    return "\n========== RECIBO ======================\n" +
+            " | Paciente:               " + paciente.getNome() + "\n" +
+            " | Profissional:           " + profissional.getNome() + "\n" +
+            " | Data:                   " + data + "\n" +
+            " | Hora:                   " + hora + "\n" +
+            " | Tipo:                   " + tipoAtendimento + "\n" +
+            " | Cobrança:               " + tipoCobranca + "\n" +
+            " | Valor base:          R$ " + String.format("%.2f", valorBase) + "\n" +
+            " | Desconto:               "   + desconto + "%\n" +
+            " | Taxa cancelamento:   R$ " + String.format("%.2f", taxaCancelamento) + "\n" +
+            " | Cancelado:              " + cancelado + "\n" +
+            " | TOTAL:               R$ " + String.format("%.2f", totalCobrado) + "\n" +
+            "=========================================\n";
+}
 }
